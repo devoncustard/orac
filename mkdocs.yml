@@ -136,3 +136,5 @@ nav:
       - deploy-pi.md
   - Contributing:
       - contributing.md
+  - Tasks:
+      - tasks.md
