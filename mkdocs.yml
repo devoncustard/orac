@@ -4,8 +4,8 @@
 site_name: OrAC
 site_description: OrAC — Butler of the House. Documentation.
 site_url: https://orac-docs.example.com
-repo_url: https://github.com/your-org/orac
-repo_name: your-org/orac
+repo_url: https://github.com/devoncustard/orac
+repo_name: devoncustard/orac
 edit_uri: edit/main/docs/
 
 theme:
