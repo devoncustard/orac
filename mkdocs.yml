@@ -1,0 +1,138 @@
+# Configuration file for the OrAC documentation site.
+# Run `mkdocs serve` to start the dev server.
+
+site_name: OrAC
+site_description: OrAC — Butler of the House. Documentation.
+site_url: https://orac-docs.example.com
+repo_url: https://github.com/your-org/orac
+repo_name: your-org/orac
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  language: en
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/toggle-switch-off
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icons:
+    nav: material/monitor-eye
+    edit: material/pencil
+    view: material/eye
+  features:
+    - content.code.copy
+    - content.code.select
+    - content.action.edit
+    - content.action.view
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+  logo: assets/orac-icon.svg
+  favicon: assets/orac-icon.svg
+
+extra:
+  version:
+    provider: mike
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/your-org/orac
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/orac/
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      base_path: .
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - sane_lists
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          options:
+            show_source: true
+            show_root_heading: true
+            show_if_no_docstring: true
+            docstring_style: google
+            members_order: source
+            show_bases: true
+            show_submodules: true
+            group_by_category: true
+            heading_level: 3
+  - minify:
+      minify_html: true
+  - git-revision-date-localized:
+      type: date
+      fallback_to_build_date: true
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - installation.md
+      - configuration.md
+      - quick-start.md
+  - CLI Reference:
+      - cli-reference.md
+      - cli/commands.md
+  - API Reference:
+      - api-reference.md
+      - API Packages:
+          - orac/config: api/orac/config.md
+          - orac/core: api/orac/core.md
+          - orac/sensors: api/orac/sensors.md
+          - orac/alerts: api/orac/alerts.md
+          - orac/api: api/orac/api.md
+          - orac/engine: api/orac/engine.md
+  - Architecture:
+      - architecture.md
+      - phases.md
+  - Deploy:
+      - deploy.md
+      - deploy-pi.md
+  - Contributing:
+      - contributing.md

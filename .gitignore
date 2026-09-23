@@ -1,0 +1,21 @@
+# OrAC
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+.env
+
+# Config (contains tokens!)
+*.secret*
+~/.config/orac/
+
+# IDE
+.vscode/
+.idea/
+
+# Data
+data/*.json
+data/*.db

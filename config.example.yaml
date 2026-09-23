@@ -1,0 +1,48 @@
+# OrAC Configuration
+# Copy to ~/.config/orac/config.yaml and edit
+
+home_assistant:
+  url: "http://192.168.1.100:8123"   # Your HA instance
+  access_token: ""                     # Long-lived access token (Settings → People → Long-Lived Access Tokens)
+
+sensors:
+  # Which sensor entity IDs to track (auto-discover if empty)
+  # OrAC will auto-discover temp/humidity sensors from HA
+  watch: []
+  # Temperature thresholds (°C)
+  alert_on_temp_high: 30
+  alert_on_temp_low: 10
+  alert_on_humidity_high: 70
+  alert_on_humidity_low: 20
+  # Battery threshold for sensor devices (%)
+  alert_on_battery_low: 20
+
+monitoring:
+  # How often to poll HA for sensor snapshots (seconds)
+  poll_interval: 60
+  # How long to keep sensor history in memory (hours)
+  history_retention: 168               # 7 days
+
+api:
+  enabled: true
+  host: "0.0.0.0"
+  port: 8901
+
+alerts:
+  enabled: true
+  notify_via:
+    - "notify.iphone"
+  tts_via:
+    - "tts.google_translate_en_com"
+  media_player: "media_player.ta_an1000"
+
+voice:
+  enabled: false
+  wake_word_model: "porcupine"        # porcupine | pumppet
+  stt_model: "whisper_tiny"           # whisper model size
+  stt_engine: "local"                 # local | openai
+  llm_model: ""                       # your LLM endpoint
+  tts_engine: "ha_tts"                # ha_tts | local
+
+logging:
+  level: "INFO"                       # DEBUG | INFO | WARNING | ERROR

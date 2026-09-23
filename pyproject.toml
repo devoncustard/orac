@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "orac"
+version = "0.1.0"
+description = "Orac — the butler bot for your home"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.13"
+dependencies = [
+    "aiohttp>=3.11",
+    "click>=8.1",
+    "pyyaml>=6.0",
+    "rich>=13.0",
+    "watchdog>=5.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.8",
+]
+
+[project.scripts]
+orac = "orac.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["orac"]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "A"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
